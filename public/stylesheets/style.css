@@ -17,6 +17,9 @@ blockquote, q {
   quotes: none;
 }
 
+a {
+  text-decoration: none;
+}
 blockquote:before, blockquote:after, q:before, q:after {
   content: "";
   content: none;
@@ -125,11 +128,15 @@ a:active {
 a,
 a:active,
 a:visited {
-  color: #607890;
+  color: #666;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #036;
+  color: #222;
+  text-decoration: none;
 }
 
 ul,
@@ -306,12 +313,11 @@ ul {
 
 li {
   list-style: none;
-  margin-left: 0;
+  margin:12px 0 12px 0;
 }
 
 .credentials {
-  background-color: #f4f4e1;
-  border: 1px solid #cbcb71;
+
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -320,7 +326,7 @@ li {
   border-radius: 5px;
   overflow: hidden;
   *zoom: 1;
-  padding: 15px;
+  padding: 15px 15px 15px 0;
 }
 
 .credentials.authed {
@@ -367,26 +373,22 @@ li {
 #controls {
   overflow: hidden;
   *zoom: 1;
-  margin-top: 10px;
-  border: 1px solid #999;
-  border-width: 1px 0;
-  padding: 10px 0;
+  color: #eee;
 }
 
 #controls li {
+  margin: 0;
   padding-right: 10px;
   float: left;
 }
 
 #controls li:not(:first-child) {
   padding-left: 10px;
-  border-left: 1px solid #ddd;
+
 }
 
-.endpoint {
+.resource {
   margin: 0;
-  background-color: #f9f9f9;
-  border-bottom: 1px solid #eee;
   overflow: hidden;
   *zoom: 1;
   -moz-transition-property: background-color;
@@ -403,48 +405,46 @@ li {
   transition-timing-function: ease;
 }
 
-.endpoint.expanded {
+.resource.expanded {
   background-color: #fff;
 }
 
-.endpoint > .title {
+.resource > .title {
   font-weight: normal;
   padding: 20px 0 10px 10px;
   overflow: hidden;
   *zoom: 1;
 }
 
-.endpoint > .title .name {
+.resource > .title .name {
   font-size: 18px;
   float: left;
 }
 
-.endpoint > .title .name:hover {
+.resource > .title .name:hover {
   cursor: pointer;
-  text-decoration: underline;
 }
 
-.endpoint > .title .actions {
+.resource > .title .actions {
   float: right;
 }
 
-.endpoint > .title .actions li {
+.resource > .title .actions li {
   float: left;
   padding: 0 10px;
   border-left: 1px solid #ddd;
 }
 
-.endpoint > .title .actions li:first-child {
+.resource > .title .actions li:first-child {
   border: 0;
 }
 
 .methods {
-  display: none;
+  /*display: none;*/
 }
 
 .method {
-  font-size: 14px;
-  border: 1px solid #eee;
+  font-size: 12px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -453,7 +453,7 @@ li {
   border-radius: 5px;
   margin: 10px 0;
   /*    &.authrequired .http-method {
-          background-image: url(/images/lock.png);
+          background-image: url(images/lock.png);
           background-repeat: no-repeat;
           background-position: 7px 50%;
       }*/
@@ -461,7 +461,6 @@ li {
 
 .method div.headers {
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 15px;
 }
 
@@ -509,7 +508,7 @@ li {
 }
 
 .method .title:hover span {
-  text-decoration: underline;
+
 }
 
 .method .title:hover span.http-method {
@@ -520,6 +519,14 @@ li {
   margin: 0 10px 0;
   line-height: 33px;
   float: left;
+}
+
+.method .title .name span {
+  float: none;
+}
+
+.method .title .uri span {
+  float: none;
 }
 
 .method .title .uri {
@@ -543,12 +550,6 @@ li {
   text-align: center;
   margin: 0;
   font-family: 'Inconsolata', 'Monaco', 'Consolas', 'Bitstream Vera Mono', monospace;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   color: #fff;
   line-height: 33px;
   float: left;
@@ -619,6 +620,7 @@ li {
   overflow: auto;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.9);
+  width: 95%;
 }
 
 .method pre.response {
@@ -636,29 +638,28 @@ li {
 }
 
 .get {
-  background: #e7f0f7;
-  border-color: #aecce4;
+  background: #F8F4C4;
 }
 
 .get .http-method {
-  background-color: #0061ac;
+  background-color: #24B335;
 }
 
 .get th, .get td {
-  border-bottom: 1px solid #9ac0de;
+  
 }
 
 .post {
-  background: #e7f6ec;
+  background: #F8F4C4;
   border-color: #afe1c0;
 }
 
 .post .http-method {
-  background-color: #04a73a;
+  background-color: #24B335;
 }
 
 .post th, .post td {
-  border-bottom: 1px solid #9ddab1;
+  
 }
 
 .put {
@@ -671,6 +672,19 @@ li {
 }
 
 .put th, .put td {
+  border-bottom: 1px solid #e3c399;
+}
+
+.patch {
+  background: #fce9e3;
+  border-color: #f5d5c3;
+}
+
+.patch .http-method {
+  background-color: #d38042;
+}
+
+.patch th, .patch td {
   border-bottom: 1px solid #e3c399;
 }
 
@@ -729,12 +743,28 @@ li {
   overflow: hidden;
 }
 
-div.cookie, div.headers, .clearfix:after {
+.clearfix:after {
   clear: both;
 }
 
 .clearfix {
   zoom: 1;
+}
+
+.foo{
+  color:red;
+}
+
+strong{
+  font-weight: bold;
+}
+
+em {
+  font-style:italic;
+}
+
+underline {
+  text-decoration:underline
 }
 
 dl {
@@ -810,4 +840,27 @@ dd {
   h2, h3 {
     page-break-after: avoid;
   }
+}
+.list-methods,.expand-methods{
+  display: inline-block;
+  padding-right: 16px;
+}
+
+/* Bookmark css */
+/* http://blog.avtex.com/2012/01/27/how-to-make-an-entire-div-clickable-with-css/ */
+div.clickable { /* Containing div must have a position value */
+    position:relative;
+}
+
+div.clickable a {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    text-decoration:none; /* Makes sure the link   doesn't get underlined */
+    z-index:10; /* raises anchor tag above everything else in div */
+    background-color:white; /*workaround to make clickable in IE */
+    opacity: 0; /*workaround to make clickable in IE */
+    filter: alpha(opacity=1); /*workaround to make clickable in IE */
 }
